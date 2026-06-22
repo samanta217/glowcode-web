@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dritezat - Kozmetika Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f5f1e8;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: #f5f1e8;
+            padding: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 31, 63, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #f5f1e8;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: #f5f1e8;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #00d4ff;
+            color: #001f3f;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background: white;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 31, 63, 0.1);
+        }
+
+        .about h2 {
+            color: #001f3f;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .about p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 60px 0;
+        }
+
+        .products-section h2 {
+            color: #001f3f;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 212, 255, 0.2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 31, 63, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: #00d4ff;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .product-name {
+            font-size: 1.3em;
+            color: #001f3f;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .product-price {
+            color: #ff6b9d;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: #f5f1e8;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-item h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .contact-item p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Order Form */
+        .order-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 31, 63, 0.15);
+            margin: 60px 0;
+        }
+
+        .order-form h2 {
+            color: #001f3f;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #001f3f;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #001f3f;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .products-checklist {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .product-checkbox {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-checkbox input {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .product-checkbox label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: #f5f1e8;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 20px rgba(0, 31, 63, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #001f3f;
+            color: #f5f1e8;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">✨ DRITEZAT</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Shtëpia</a></li>
+                    <li><a href="#products">Produktet</a></li>
+                    <li><a href="#order">Porosi</a></li>
+                    <li><a href="#contact">Kontakte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Miresevini driteza💄</h1>
+            <p>Kozmetika e Kalitesit me Cmime te Arsyeshme</p>
+            <a href="#order" class="cta-button">🛒 Porosit Tani</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container">
+        <div class="about">
+            <h2>Rreth Nesh</h2>
+            <p>Ne jemi nje biznes i vogel qe kemi cmime te arsyeshme. Oferojme produktet më të mirë të kozmetikës me çmime të afordushme për të gjithë. Besojmë në kalitetin dhe shërbimin e mirë ndaj secilit klienti.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container products-section" id="products">
+        <h2>🎀 Produktet Tona</h2>
+        <div id="products-container" class="products-grid">
+            <!-- Produktet do të shtohen me JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>📞 Kontakte</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📱 Telefon</h3>
+                    <p>+355 692 442 665</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Adresa</h3>
+                    <p>Kodra e Diellit 1, Tiranë</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🕐 Orari i Punës</h3>
+                    <p>09:00 - 22:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="container" id="order">
+        <div class="order-form">
+            <h2>📦 Forma e Porosise</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="emri">Emri dhe Mbiemri *</label>
+                    <input type="text" id="emri" name="emri" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefon">Numri i Telefonit *</label>
+                    <input type="tel" id="telefon" name="telefon" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="adresa">Adresa e Dërgimit *</label>
+                    <input type="text" id="adresa" name="adresa" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Zgjedh Produktet *</label>
+                    <div class="products-checklist" id="productsChecklist">
+                        <!-- Produktet do të shtohen me JavaScript -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="shenim">Shënime të Posaçme</label>
+                    <textarea id="shenim" name="shenim" rows="4" placeholder="Shto ndonjë shënim nëse dëshiron..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">✅ Dërgo Porosinë - CASH</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 DRITEZAT - Kozmetika Online | Të gjitha të drejtat e rezervuara</p>
+        <p>📞 +355 692 442 665 | Kodra e Diellit 1, Tiranë</p>
+    </footer>
+
+    <script>
+        // Produktet
+        const produktet = [
+            // Mascaras
+            { name: "Sky High Mascara", category: "Rimel", price: "8.99€", emoji: "💫" },
+            { name: "I Love Extreme Mascara", category: "Rimel", price: "9.99€", emoji: "💫" },
+            { name: "I Love Extreme Waterproof", category: "Rimel", price: "10.99€", emoji: "💫" },
+            { name: "Lash Like A Princess Green", category: "Rimel", price: "11.99€", emoji: "💫" },
+            { name: "Lash Like A Princess Waterproof", category: "Rimel", price: "11.99€", emoji: "💫" },
+            { name: "Lash Like A Princess Purple", category: "Rimel", price: "11.99€", emoji: "💫" },
+            { name: "Lash Like A Princess Pink", category: "Rimel", price: "11.99€", emoji: "💫" },
+            
+            // Foundations
+            { name: "Fit Me Foundation", category: "Foundation", price: "7.99€", emoji: "🌟" },
+            { name: "Tir Tir Foundation", category: "Foundation", price: "12.99€", emoji: "🌟" },
+            { name: "Estée Lauder Double Wear", category: "Foundation", price: "45.99€", emoji: "🌟" },
+            { name: "True Match Foundation", category: "Foundation", price: "8.99€", emoji: "🌟" },
+            { name: "Pro Filter Foundation", category: "Foundation", price: "9.99€", emoji: "🌟" },
+            { name: "Natural Radiant Longwear", category: "Foundation", price: "10.99€", emoji: "🌟" },
+            
+            // Powders
+            { name: "Fit Me Matte+Poreless Powder", category: "Powder", price: "6.99€", emoji: "☁️" },
+            { name: "Stay Matte Powder", category: "Powder", price: "7.99€", emoji: "☁️" },
+            { name: "Can't Stop Won't Stop Powder", category: "Powder", price: "8.99€", emoji: "☁️" },
+            { name: "Easy Bake Loose Setting Powder", category: "Powder", price: "7.99€", emoji: "☁️" },
+            
+            // Primers
+            { name: "Power Grip Primer", category: "Primer", price: "9.99€", emoji: "✨" },
+            { name: "Baby Skin Instant Pore Eraser", category: "Primer", price: "8.99€", emoji: "✨" },
+            { name: "The Marshmallow Primer", category: "Primer", price: "10.99€", emoji: "✨" },
+            { name: "The Porefessional Primer", category: "Primer", price: "11.99€", emoji: "✨" },
+            { name: "Hydro Grip Primer", category: "Primer", price: "10.99€", emoji: "✨" },
+            { name: "Fix&Last Makeup Gripping Jelly", category: "Primer", price: "9.99€", emoji: "✨" },
+            
+            // Eyeshadows
+            { name: "Nude Obsession Palette", category: "Eyeshadow", price: "18.99€", emoji: "🎨" },
+            { name: "Soft Glam Palette", category: "Eyeshadow", price: "19.99€", emoji: "🎨" },
+            { name: "350 Supernatural Glow Palette", category: "Eyeshadow", price: "20.99€", emoji: "🎨" },
+            { name: "Ultimate Shadow Palette", category: "Eyeshadow", price: "21.99€", emoji: "🎨" },
+            { name: "Born This Way Natural Nudes", category: "Eyeshadow", price: "18.99€", emoji: "🎨" }
+        ];
+
+        // Shfaq produktet në grid
+        function displayProducts() {
+            const container = document.getElementById('products-container');
+            produktet.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">${product.emoji}</div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">${product.price}</div>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+        }
+
+        // Shfaq checkbox-et për produktet
+        function displayProductsChecklist() {
+            const checklist = document.getElementById('productsChecklist');
+            produktet.forEach((product, index) => {
+                const checkboxDiv = document.createElement('div');
+                checkboxDiv.className = 'product-checkbox';
+                checkboxDiv.innerHTML = `
+                    <input type="checkbox" id="product${index}" name="product${index}" value="${product.name} - ${product.price}">
+                    <label for="product${index}">${product.name} (${product.price})</label>
+                `;
+                checklist.appendChild(checkboxDiv);
+            });
+        }
+
+        // Dërgo formën
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emri = document.getElementById('emri').value;
+            const telefon = document.getElementById('telefon').value;
+            const adresa = document.getElementById('adresa').value;
+            const shenim = document.getElementById('shenim').value;
+            
+            // Mblidh produktet e zgjedhur
+            const selectedProducts = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                selectedProducts.push(checkbox.value);
+            });
+
+            if (selectedProducts.length === 0) {
+                alert('Zgjedh të paktën një produkt!');
+                return;
+            }
+
+            // Përgatit mesazhin
+            const message = `
+POROSI E RE - DRITEZAT 💄
+================================
+👤 Emri: ${emri}
+📱 Telefon: ${telefon}
+📍 Adresa: ${adresa}
+
+📦 PRODUKTET:
+${selectedProducts.join('\n')}
+
+📝 Shënim: ${shenim || 'Asnjë'}
+
+💰 PAGESA: CASH
+================================
+Faleminderit për porosinë!
+            `;
+
+            // Dërgo në email përmes Make.com
+            // (Ky është placeholder - do të lidhet me Make.com më vonë)
+            console.log(message);
+            
+            alert('✅ Porosia u dërgua me sukses!\nShpejti do të marresh konfirmimin në email.');
+            this.reset();
+        });
+
+        // Inicijalizimi
+        window.addEventListener('load', function() {
+            displayProducts();
+            displayProductsChecklist();
+        });
+    </script>
+</body>
+</html>
